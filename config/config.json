@@ -1,0 +1,12 @@
+{
+    "port": 8080,
+    "database": {
+        "host": "localhost",
+        "user": "root",
+        "password": "password",
+        "database": "depop",
+        "multipleStatements": true,
+        "dateStrings": true,
+        "port": 8889
+    }
+}
