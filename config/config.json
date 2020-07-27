@@ -1,12 +1,12 @@
 {
     "port": 8080,
     "database": {
-        "host": "localhost",
+        "host": "tinytwistvintage-db.c9lmnnktzjtj.us-east-2.rds.amazonaws.com",
         "user": "root",
         "password": "password",
         "database": "depop",
         "multipleStatements": true,
         "dateStrings": true,
-        "port": 8889
+        "port": "3306"
     }
 }
