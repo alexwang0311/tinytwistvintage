@@ -1,7 +1,7 @@
 {
     "apps" : [{
         "name": "tinytwistvintage",
-        "script": "index.js",
+        "script": "./src/server/index.js",
         "env": {
             "DISPLAY": ":99"
         }
