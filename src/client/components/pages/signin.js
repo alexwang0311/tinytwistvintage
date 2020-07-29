@@ -15,6 +15,8 @@ import { makeStyles, responsiveFontSizes } from '@material-ui/core/styles';
 import Copyright from '../utils/copyright';
 import { sha256 } from 'js-sha256';
 import { Redirect } from 'react-router-dom';
+import { Snackbar } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +56,14 @@ export default function SignInSide(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+  const [err, setErr] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setErr(false);
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -73,7 +83,11 @@ export default function SignInSide(props) {
       //console.log(d);
       props.signIn(!d.err ? true : false);
       if(!d.err){
+        setErr(false);
         setRedirect(true);
+      }
+      else{
+        setErr(true);
       }
     });
   }
@@ -82,6 +96,11 @@ export default function SignInSide(props) {
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={4} md={7} className={classes.image} />
+      <Snackbar open={err} autoHideDuration={6000} onClose={handleClose}>
+        <Alert variant="filled" onClose={handleClose} severity="error">
+          Authorized User
+        </Alert>
+      </Snackbar>
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
@@ -115,10 +134,10 @@ export default function SignInSide(props) {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
+            {/*<FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            />*/}
             <Button
               type="submit"
               fullWidth
@@ -131,14 +150,16 @@ export default function SignInSide(props) {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link href="https://www.linkedin.com/in/alexwang990311/" variant="body2">
                   Contact developer
                 </Link>
               </Grid>
               <Grid item>
+                {/*
                 <Link href="#" variant="body2">
                   {"Sign up"}
                 </Link>
+                */}
               </Grid>
             </Grid>
             <Box mt={5}>
