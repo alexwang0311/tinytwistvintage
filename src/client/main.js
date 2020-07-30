@@ -9,17 +9,17 @@ import Inventory from './components/pages/inventory';
 import SignInSide from './components/pages/signin';
 
 const MyApp = () => {
-  const data = localStorage.getItem("signedIn");
-  const [signedIn, setSignedIn] = useState(JSON.parse(data));
+  const data = localStorage.getItem("password");
+  const [signedIn, setSignedIn] = useState(data);
 
   const signInHandler = (d) => {
     //console.log(`sign in status: ${d}`);
-    localStorage.setItem("signedIn", d);
-    setSignedIn(d ? true : false);
+    localStorage.setItem("password", d);
+    setSignedIn(d);
     //console.log(signedIn);
   };
 
-  const isSignedIn = () => {return signedIn;};
+  const isSignedIn = () => {return signedIn == "f0f6f0099a18c32189697c8e7dab8ca1a19a54a2372f312810a401de31f4346b";};
 
   return (
     <BrowserRouter>

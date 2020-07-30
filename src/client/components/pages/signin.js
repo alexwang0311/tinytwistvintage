@@ -81,7 +81,7 @@ export default function SignInSide(props) {
     });
     res.json().then(d => {
       //console.log(d);
-      props.signIn(!d.err ? true : false);
+      props.signIn(sha256(password));
       if(!d.err){
         setErr(false);
         setRedirect(true);
